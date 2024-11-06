@@ -1,30 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
+    <!-- Meta information for the page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Course</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Natuurkunde oefenen op de middelbare school">
+    <title>NatuurKunJeWel</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-        <h1>Welcome to the Physics Course</h1>
+        <h1>NatuurKunJeWel</h1> <!-- Main heading of the website -->
         <nav>
             <ul>
+                <!-- Navigation menu -->
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h2>Introduction</h2>
-        <p>This is a physics course for high school students...</p>
-    </main>
+    <!-- Main content -->
+    <div class="spacer" style="height: 20px;"></div> <!-- empty space -->
+    
+    <!-- Buttons Section -->
+    <div class="button-container">
+        <div class="button-item">
+            <a href="bouwstenen.html" class="button">Bouwstenen</a>
+            <p class="button-text">Text for Button 1</p>
+        </div>
+        <div class="button-item">
+            <a href="krachtenbeweging.html" class="button">Kracht & Beweging</a>
+            <p class="button-text">Text for Button 2</p>
+        </div>
+        <div class="button-item">
+            <a href="Elektriciteit.html" class="button">Elektriciteit</a>
+            <p class="button-text">Text for Button 3</p>
+        </div>
+        <div class="button-item">
+            <a href="Golven.html" class="button">Golven</a>
+            <p class="button-text">Text for Button 4</p>
+        </div>
+        <div class="button-item">
+            <a href="Extra.html" class="button">Extra</a>
+            <p class="button-text">Text for Button 5</p>
+        </div>
+    </div>
 
+    <div class="spacer" style="height: 20px;"></div> <!-- empty space -->
+
+    <script>
+        // Fetching and displaying the content from the first text file
+        fetch('home_text_1.txt')
+            .then(response => response.text())
+            .then(data => document.getElementById('home_text_1').innerText = data)
+            .catch(error => console.error('Error loading the first file:', error));
+    </script>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2024 Physics Course</p>
+        <p>© 2024 NatuurKunJeWel</p> <!-- Copyright information -->
     </footer>
+
 </body>
 </html>
