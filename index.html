@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Natuurkunde oefenen op de middelbare school">
     <title>NatuurKunJeWel</title>
+    <base href="/">
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
@@ -22,45 +23,37 @@
     </header>
 
     <!-- Main content -->
-    <div class="spacer" style="height: 20px;"></div> <!-- empty space -->
+    <div class="spacer" style="height: 20px;"></div>
     
     <!-- Buttons Section -->
     <div class="button-container">
         <div class="button-item">
-            <a href="bouwstenen.html" class="button">Bouwstenen</a>
+            <a href="bouwstenen/bouwstenen.html" class="button">Bouwstenen</a>
             <p class="button-text">Text for Button 1</p>
         </div>
         <div class="button-item">
-            <a href="krachtenbeweging.html" class="button">Kracht & Beweging</a>
+            <a href="krachtenbeweging/krachtenbeweging.html" class="button">Kracht & Beweging</a>
             <p class="button-text">Text for Button 2</p>
         </div>
         <div class="button-item">
-            <a href="elektriciteit.html" class="button">Elektriciteit</a>
+            <a href="elektriciteit/elektriciteit.html" class="button">Elektriciteit</a>
             <p class="button-text">Text for Button 3</p>
         </div>
         <div class="button-item">
-            <a href="golven.html" class="button">Golven</a>
+            <a href="golven/golven.html" class="button">Golven</a>
             <p class="button-text">Text for Button 4</p>
         </div>
         <div class="button-item">
-            <a href="extra.html" class="button">Extra</a>
+            <a href="extra/extra.html" class="button">Extra</a>
             <p class="button-text">Text for Button 5</p>
         </div>
     </div>
 
-    <div class="spacer" style="height: 20px;"></div> <!-- empty space -->
-
-    <script>
-        // Fetching and displaying the content from the first text file
-        fetch('home_text_1.txt')
-            .then(response => response.text())
-            .then(data => document.getElementById('home_text_1').innerText = data)
-            .catch(error => console.error('Error loading the first file:', error));
-    </script>
+    <div class="spacer" style="height: 20px;"></div>
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 NatuurKunJeWel</p> <!-- Copyright information -->
+        <p>© 2024 NatuurKunJeWel</p>
     </footer>
 
 </body>
