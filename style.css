@@ -55,7 +55,6 @@ nav ul li a {
 
 /* Button Item */
 .button-item {
-    position: relative;
     text-align: center;
 }
 
@@ -76,40 +75,4 @@ nav ul li a {
 
 .button:hover {
     background-color: slategray;
-}
-
-/* Dropdown Menu */
-.dropdown-content {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 8px;
-    max-height: 0; /* Initially, the dropdown is collapsed */
-    overflow: hidden; /* Prevent overflow when collapsed */
-    transition: max-height 0.5s ease-out; /* Smooth expansion */
-}
-
-/* Show dropdown on button hover */
-.button-item:hover .dropdown-content {
-    max-height: 500px; /* Allow dropdown to expand to a maximum height */
-}
-
-/* Dropdown Links */
-.dropdown-content a {
-    color: darkslategray;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-.dropdown-content a:hover {
-    background-color: slategray;
-    color: white;
 }
