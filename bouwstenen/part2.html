@@ -1,0 +1,27 @@
+<!-- part2.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2</title>
+    <base href="/">
+</head>
+<body>
+    <div class="part">
+        <!-- Text part (description or information) -->
+        <p>
+            Here is some additional text to explain the next question.
+        </p>
+
+        <!-- Question part -->
+        <h3>Question 2: What is the sum of 2 + 2?</h3>
+        <form id="question2-form">
+            <input type="radio" id="a2" name="question2" value="3"> <label for="a2">3</label><br>
+            <input type="radio" id="b2" name="question2" value="4"> <label for="b2">4</label><br>
+            <input type="radio" id="c2" name="question2" value="5"> <label for="c2">5</label><br>
+            <button type="button" onclick="checkAnswer(2, '4')">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -8,7 +8,6 @@
     <base href="/">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles for correct and incorrect answers */
         .correct {
             background-color: green;
             color: white;
@@ -17,8 +16,7 @@
             background-color: red;
             color: white;
         }
-        /* Initially hide all questions after the first */
-        #question2-section, #question3-section, #question4-section, #question5-section {
+        .part {
             display: none;
         }
     </style>
@@ -34,121 +32,11 @@
     </header>
 
     <main>
-        <!-- Text Section -->
-        <section id="explanation">
-            <h2>Uitleg</h2>
-            <p>Hier kun je uitleg over een natuurkundig onderwerp geven. Voeg zoveel tekst toe als je wilt.</p>
-        </section>
-
-        <!-- Quiz Section -->
         <section id="quiz">
             <h2>Quiz</h2>
-
-            <!-- Question 1 -->
-            <div class="quiz-question">
-                <p><strong>Vraag 1:</strong> Wat is de formule voor snelheid?</p>
-                <form id="question1-form">
-                    <label>
-                        <input type="radio" name="question1" value="a">
-                        A) Afstand / Tijd
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question1" value="b">
-                        B) Massa x Versnelling
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question1" value="c">
-                        C) Kracht / Tijd
-                    </label><br>
-                    <button type="button" onclick="checkAnswer('question1', 'a', this)">Submit</button>
-                </form>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="quiz-question" id="question2-section">
-                <p><strong>Uitleg voor Vraag 2:</strong> Wanneer de massa van een object toeneemt, verandert ook de kracht die het object ondervindt door de zwaartekracht.</p>
-                <p><strong>Vraag 2:</strong> Wat gebeurt er met de zwaartekracht als de massa toeneemt?</p>
-                <form id="question2-form">
-                    <label>
-                        <input type="radio" name="question2" value="a">
-                        A) De zwaartekracht neemt af.
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question2" value="b">
-                        B) De zwaartekracht blijft gelijk.
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question2" value="c">
-                        C) De zwaartekracht neemt toe.
-                    </label><br>
-                    <button type="button" onclick="checkAnswer('question2', 'c', this)">Submit</button>
-                </form>
-            </div>
-
-            <!-- Question 3 -->
-            <div class="quiz-question" id="question3-section">
-                <p><strong>Uitleg voor Vraag 3:</strong> Kinetische energie is de energie die een object bezit vanwege zijn snelheid.</p>
-                <p><strong>Vraag 3:</strong> Wat is de formule voor kinetische energie?</p>
-                <form id="question3-form">
-                    <label>
-                        <input type="radio" name="question3" value="a">
-                        A) 1/2 mv^2
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question3" value="b">
-                        B) mgh
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question3" value="c">
-                        C) F x d
-                    </label><br>
-                    <button type="button" onclick="checkAnswer('question3', 'a', this)">Submit</button>
-                </form>
-            </div>
-
-            <!-- Question 4 -->
-            <div class="quiz-question" id="question4-section">
-                <p><strong>Uitleg voor Vraag 4:</strong> De wet van behoud van energie stelt dat energie niet kan worden gecreëerd of vernietigd, alleen omgezet.</p>
-                <p><strong>Vraag 4:</strong> Wat gebeurt er met de totale energie in een geïsoleerd systeem?</p>
-                <form id="question4-form">
-                    <label>
-                        <input type="radio" name="question4" value="a">
-                        A) Het neemt toe.
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question4" value="b">
-                        B) Het blijft gelijk.
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question4" value="c">
-                        C) Het neemt af.
-                    </label><br>
-                    <button type="button" onclick="checkAnswer('question4', 'b', this)">Submit</button>
-                </form>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="quiz-question" id="question5-section">
-                <p><strong>Uitleg voor Vraag 5:</strong> De tweede wet van Newton stelt dat kracht gelijk is aan massa maal versnelling.</p>
-                <p><strong>Vraag 5:</strong> Wat is de formule volgens de tweede wet van Newton?</p>
-                <form id="question5-form">
-                    <label>
-                        <input type="radio" name="question5" value="a">
-                        A) F = ma
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question5" value="b">
-                        B) F = mv
-                    </label><br>
-                    <label>
-                        <input type="radio" name="question5" value="c">
-                        C) F = mg
-                    </label><br>
-                    <button type="button" onclick="checkAnswer('question5', 'a', this)">Submit</button>
-                </form>
-            </div>
-
+            <div id="content"></div>
         </section>
+        <div id="feedback"></div>
     </main>
 
     <footer>
@@ -156,34 +44,57 @@
     </footer>
 
     <script>
-        // Function to check the answer and unlock the next question if correct
-        function checkAnswer(questionName, correctAnswer, button) {
-            const form = document.getElementById(questionName + '-form');
-            const selected = form.querySelector(`input[name="${questionName}"]:checked`);
+        const parts = ['bouwstenen/part1.html', 'bouwstenen/part2.html'];
+        let currentIndex = 0;
+
+        function loadPart(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    document.querySelector('.part').style.display = 'block';
+                })
+                .catch(error => console.log("Error loading part: " + error));
+        }
+
+        function loadNextPart() {
+            if (currentIndex < parts.length) {
+                loadPart(parts[currentIndex], 'content');
+                currentIndex++;
+            } else {
+                alert("Quiz afgerond!");
+            }
+        }
+
+        function checkAnswer(questionIndex, correctAnswer) {
+            const form = document.getElementById(`question${questionIndex}-form`);
+            const selected = form.querySelector(`input[name="question${questionIndex}"]:checked`);
+            const feedbackDiv = document.getElementById('feedback');
 
             if (selected) {
-                if (selected.value === correctAnswer) {
-                    button.classList.add('correct');
-                    button.classList.remove('incorrect');
+                const submitButton = form.querySelector('button');
 
-                    // Show the next question if the current question is correct
-                    if (questionName === 'question1') {
-                        document.getElementById('question2-section').style.display = 'block';
-                    } else if (questionName === 'question2') {
-                        document.getElementById('question3-section').style.display = 'block';
-                    } else if (questionName === 'question3') {
-                        document.getElementById('question4-section').style.display = 'block';
-                    } else if (questionName === 'question4') {
-                        document.getElementById('question5-section').style.display = 'block';
-                    }
+                if (selected.value === correctAnswer) {
+                    submitButton.classList.add('correct');
+                    submitButton.classList.remove('incorrect');
+                    submitButton.disabled = true;
+                    feedbackDiv.textContent = "Correct! Moving to the next question.";
+
+                    document.querySelector('.part').style.display = 'none';
+                    loadNextPart();
                 } else {
-                    button.classList.add('incorrect');
-                    button.classList.remove('correct');
+                    submitButton.classList.add('incorrect');
+                    submitButton.classList.remove('correct');
+                    feedbackDiv.textContent = "Incorrect answer. Please try again.";
                 }
             } else {
                 alert("Selecteer een antwoord voordat je op 'Submit' klikt.");
             }
         }
+
+        window.onload = function() {
+            loadNextPart();
+        };
     </script>
 </body>
 </html>

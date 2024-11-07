@@ -1,0 +1,27 @@
+<!-- part1.html -->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1</title>
+    <base href="/">
+</head>
+<body>
+    <div class="part">
+        <!-- Text part (description or information) -->
+        <p>
+            This is some introductory text explaining the concept before the question.
+        </p>
+
+        <!-- Question part -->
+        <h3>Question 1: What is the capital of France?</h3>
+        <form id="question1-form">
+            <input type="radio" id="a1" name="question1" value="Paris"> <label for="a1">Paris</label><br>
+            <input type="radio" id="b1" name="question1" value="London"> <label for="b1">London</label><br>
+            <input type="radio" id="c1" name="question1" value="Berlin"> <label for="c1">Berlin</label><br>
+            <button type="button" onclick="checkAnswer(1, 'Paris')">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
